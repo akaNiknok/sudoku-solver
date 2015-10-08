@@ -22,11 +22,18 @@ def make_board():
         sys.exit(2)
 
 
+def print_board(board):
+    for row in board:
+        print " ".join(row)
+
+
 def main():
     if len(sys.argv) != 2:
         print "usage: sudoku-solver.py [Sudoku File]"
         sys.exit(1)
 
     board = make_board()
+
+    print_board(board)
 
 main()

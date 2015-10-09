@@ -49,6 +49,14 @@ def used_in_box(board, start_box_row, start_box_col, num):
     return False
 
 
+def is_safe(board, row, col, num):
+    if (not used_in_row(board, row, num) and
+            not used_in_col(board, col, num) and
+            not used_in_box(board, row - row % 3, col - col % 3, num)):
+        return True
+    return False
+
+
 def main():
     if len(sys.argv) != 2:
         print "usage: sudoku-solver.py [Sudoku File]"

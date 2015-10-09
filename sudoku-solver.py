@@ -27,6 +27,13 @@ def print_board(board):
         print " ".join(row)
 
 
+def used_in_row(board, row, num):
+    for col in range(9):
+        if board[row][col] == num:
+            return True
+    return False
+
+
 def main():
     if len(sys.argv) != 2:
         print "usage: sudoku-solver.py [Sudoku File]"

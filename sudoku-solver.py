@@ -41,6 +41,14 @@ def used_in_col(board, col, num):
     return False
 
 
+def used_in_box(board, start_box_row, start_box_col, num):
+    for row in range(3):
+        for col in range(3):
+            if board[row + start_box_row][col + start_box_col] == num:
+                return True
+    return False
+
+
 def main():
     if len(sys.argv) != 2:
         print "usage: sudoku-solver.py [Sudoku File]"

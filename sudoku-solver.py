@@ -5,8 +5,24 @@ A program to solve for the popular puzzle game, Sudoku"""
 import random
 import sys
 
-g_row = 0
-g_col = 0
+
+def solve(board):
+
+    if not empty_space(board):
+        return True
+    else:
+        row, col = empty_space(board)
+
+    for num in range(1, 10):
+        if is_safe(board, row, col, num):
+            board[row][col] = num
+
+            if solve(board):
+                return True
+
+            board[row][col] = 0
+
+    return False
 
 
 def make_board():
@@ -17,7 +33,7 @@ def make_board():
                 row = []
                 for num in input_file.readline():
                     if num != "\n":
-                        row.append(num)
+                        row.append(int(num))
                 board.append(row)
         return board
     except IOError:
@@ -27,7 +43,7 @@ def make_board():
 
 def print_board(board):
     for row in board:
-        print " ".join(row)
+        print " ".join(str(num) for num in row)
 
 
 def used_in_row(board, row, num):
@@ -61,11 +77,10 @@ def is_safe(board, row, col, num):
 
 
 def empty_space(board):
-    global g_row, g_col
-    for g_row in range(9):
-        for g_col in range(9):
-            if board[g_row][g_col] == " ":
-                return True
+    for row in range(9):
+        for col in range(9):
+            if board[row][col] == 0:
+                return row, col
     return False
 
 
@@ -76,6 +91,14 @@ def main():
 
     board = make_board()
 
+    print "Input:"
     print_board(board)
+    print "------------------"
+
+    if solve(board):
+        print "Solution:"
+        print_board(board)
+    else:
+        print "No solution exist"
 
 main()

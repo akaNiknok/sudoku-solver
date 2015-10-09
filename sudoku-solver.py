@@ -5,6 +5,9 @@ A program to solve for the popular puzzle game, Sudoku"""
 import random
 import sys
 
+g_row = 0
+g_col = 0
+
 
 def make_board():
     try:
@@ -54,6 +57,15 @@ def is_safe(board, row, col, num):
             not used_in_col(board, col, num) and
             not used_in_box(board, row - row % 3, col - col % 3, num)):
         return True
+    return False
+
+
+def empty_space(board):
+    global g_row, g_col
+    for g_row in range(9):
+        for g_col in range(9):
+            if board[g_row][g_col] == " ":
+                return True
     return False
 
 

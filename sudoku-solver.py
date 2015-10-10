@@ -98,7 +98,7 @@ def main():
     start = time.time()
     if solve(board):
         end = time.time()
-        print "Solution (" + str(end - start) + " seconds):"
+        print "Solution (" + str(round(end - start, 4)) + " seconds):"
         print_board(board)
     else:
         print "No solution exist"

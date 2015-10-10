@@ -2,7 +2,7 @@
 
 A program to solve for the popular puzzle game, Sudoku"""
 
-import random
+import time
 import sys
 
 
@@ -95,8 +95,10 @@ def main():
     print_board(board)
     print "------------------"
 
+    start = time.time()
     if solve(board):
-        print "Solution:"
+        end = time.time()
+        print "Solution (" + str(end - start) + " seconds):"
         print_board(board)
     else:
         print "No solution exist"

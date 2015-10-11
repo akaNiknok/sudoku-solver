@@ -4,6 +4,10 @@ A Python program that solves the popular board game, Sudoku, using the backtrack
 ## Usage
 `$ python sudoku-solver.py [Sudoku file]`
 
+example:
+
+`$ python sudoku-solver.py example_board.txt`
+
 The Sudoku file should look like this:
 
 ```

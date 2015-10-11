@@ -50,8 +50,11 @@ def make_board():
 
 def print_board(board):
     """Prints the board"""
-    for row in board:
-        print " ".join(str(num) for num in row)
+    print "+-------+-------+-------+"
+    for i in range(9):
+        print "| {} {} {} | {} {} {} | {} {} {} |".format(*board[i])
+        if (i + 1) % 3 == 0:
+            print "+-------+-------+-------+"
 
 
 def used_in_row(board, row, num):
@@ -109,7 +112,7 @@ def main():
 
     print "Input:"
     print_board(board)
-    print "------------------"
+    print "========================="
 
     start = time.time()
 
